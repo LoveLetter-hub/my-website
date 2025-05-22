@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Love Letter</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Georgia&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #ffd1dc, #ffe6f0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-y: auto;
+      color: #5a2a43;
+    }
+
+    .container {
+      max-width: 650px;
+      background: #fff0f6;
+      margin: 40px 20px;
+      padding: 40px 40px 50px;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(218, 112, 158, 0.35);
+      z-index: 2;
+      text-align: center;
+      position: relative;
+      transition: opacity 0.6s ease;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      user-select: text;
+    }
+
+    h2, h1 {
+      font-family: 'Dancing Script', cursive;
+      color: #b83270;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px #f8cde6;
+      user-select: none;
+    }
+
+    h2 {
+      font-size: 3rem;
+      letter-spacing: 0.05em;
+    }
+    h1 {
+      font-size: 3.6rem;
+      margin-top: 0;
+      margin-bottom: 40px;
+      position: relative;
+      line-height: 1.1;
+    }
+
+    h1::before {
+      content: "❝";
+      position: absolute;
+      font-size: 5rem;
+      left: -40px;
+      top: -20px;
+      color: #e753a5;
+      user-select: none;
+      filter: drop-shadow(0 0 3px #faddf2);
+    }
+    h1::after {
+      content: "❞";
+      position: absolute;
+      font-size: 5rem;
+      right: -40px;
+      bottom: -20px;
+      color: #e753a5;
+      user-select: none;
+      filter: drop-shadow(0 0 3px #faddf2);
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 14px 34px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      background: #d9468f;
+      color: white;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 6px 16px rgba(217, 72, 124, 0.5);
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    .btn:hover,
+    .btn:focus {
+      background-color: #bc107a;
+      outline: none;
+      transform: scale(1.06);
+      box-shadow: 0 8px 22px rgba(188, 16, 122, 0.7);
+    }
+    .btn:active {
+      transform: scale(0.95);
+      box-shadow: 0 5px 14px rgba(188, 16, 122, 0.9);
+    }
+
+    .letter {
+      text-align: center;
+      color: #61375e;
+      font-style: italic;
+      white-space: pre-wrap;
+      user-select: text;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.00;
+    }
+    .letter p {
+      margin-bottom: 1.5em;
+    }
+
+    /* Drop cap first letter */
+    .letter p:first-child::first-letter {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: #bb3c81;
+      float: left;
+      line-height: 1;
+      margin-right: 12px;
+      user-select: none;
+      text-shadow: 0 1px 3px rgba(187, 60, 129, 0.8);
+    }
+
+    .signature {
+      text-align: right;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #9d3a6e;
+      margin-top: 50px;
+      text-shadow: 0 1px 2px rgba(173, 91, 139, 0.6);
+      user-select: none;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 30px 25px 40px;
+      }
+      h2 {
+        font-size: 2.4rem;
+      }
+      h1 {
+        font-size: 2.8rem;
+        margin-bottom: 30px;
+      }
+      .btn-group {
+        gap: 20px;
+      }
+      .btn {
+        padding: 12px 26px;
+        font-size: 16px;
+      }
+      .letter {
+        max-width: 90vw;
+        font-size: 1.1rem;
+        line-height: 1.15;
+      }
+      .signature {
+        font-size: 1.3rem;
+        margin-top: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="question">
+    <h2>Do you want to see my love letter?</h2>
+    <div class="btn-group">
+      <button class="btn" onclick="showLetter()"
+        aria-label="Yes, please show me the love letter">Yes</button>
+      <button class="btn" onclick="showSad()"
+        aria-label="No, I don't want to see the love letter">No</button>
+    </div>
+  </div>
+
+  <div class="container" id="love-letter" style="display:none; opacity: 0;">
+    <h1>To My Dearest <span id="recipient-name">[Name]</span>,</h1>
+    <div class="letter">
+      <p>I wrote this letter to express what was in my heart lately and what I felt. I know you've been going through a hard time lately, but I haven't been by your side to be your best support.</p>
+      <p>With all my heart, I’m sorry and I dearly miss those sweet, early days when our story first began, when we laughed and teased each other playfully, free from the weight of our worries and problems.</p>
+      <p>I know there are moments when sadness finds you, whether from the burdens you carry now or the wounds left by what you've already been through. But please know this no matter the distance or silence, I am always here for you and I deeply regret the things I've done that have hurt your heart.</p>
+      <p>I understand that, whether knowingly or not, my actions have hurt your heart and caused you pain. I deeply regret them, though I wish that regret had come sooner, not only after the fact.</p>
+      <p>I hope we can be like we once were, only better than before. I truly miss the memories we've shared and wish for them to continue into our future. I hold onto this hope with all my heart. Insyaallah</p>
+    </div>
+    <div class="signature">Forever and always,<br><span id="your-name">[Your Name]</span></div>
+  </div>
+
+  <div class="container" id="sad-msg" style="display:none; opacity: 0;">
+    <h2>😢 Oh no!</h2>
+    <p>Maybe you'll say yes next time.</p>
+  </div>
+
+  <script>
+    function showLetter() {
+      document.getElementById('question').style.display = 'none';
+      const loveLetter = document.getElementById('love-letter');
+      loveLetter.style.display = 'block';
+      setTimeout(() => { loveLetter.style.opacity = 1; }, 50);
+    }
+
+    function showSad() {
+      document.getElementById('question').style.display = 'none';
+      const sadMsg = document.getElementById('sad-msg');
+      sadMsg.style.display = 'block';
+      setTimeout(() => { sadMsg.style.opacity = 1; }, 50);
+    }
+
+    function setNames(recipient, sender) {
+      document.getElementById('recipient-name').innerText = recipient;
+      document.getElementById('your-name').innerText = sender;
+    }
+
+    // Example names - replace as you like
+    setNames('Arsmisha Qasdina', 'Your Beloved');
+  </script>
+</body>
+</html>
